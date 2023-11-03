@@ -6,6 +6,9 @@ const GlobalStyles = createGlobalStyle`
   --color-black: #000;
   
   --color-grey-light: #b9b9b9;
+
+  --color-primary: #FABB18;
+  --color-primary-darker: #F1B006;
 }
 
 *,
@@ -27,6 +30,7 @@ body {
   font-size: 1.6rem;
   background-color: var(--color-white);
   color: var(--color-black);
+  transition: background-color .3s color 0.3s;
 }
 
 input,
