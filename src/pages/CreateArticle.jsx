@@ -1,22 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../ui/Header";
-import ArticleList from "../features/article/ArticleList";
+import CreateForm from "../features/article/CreateForm";
 
-function Article() {
+function CreateArticle() {
   return (
     <ArticleLayout>
-      <Header />
-      <ArticleList />
+      <CreateForm />
     </ArticleLayout>
   )
 };
 
 const ArticleLayout = styled.div`
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-export default Article;
+export default CreateArticle;

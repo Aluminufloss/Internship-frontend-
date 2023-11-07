@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyle";
 import Login from "./pages/Login";
 import Article from "./pages/Article";
-import Tests from "./pages/Tests";
 import NotFound from "./pages/NotFound";
+import CreateArticle from "./pages/CreateArticle";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/articles" element={<Article />} />
-          <Route path="/test" element={<Tests />} />
+          <Route path="/articles/create" element={<CreateArticle />} />
           <Route path="*" element={<NotFound />}/>
         </Routes>
     </>
@@ -21,7 +21,3 @@ function App() {
 };
 
 export default App;
-
-
-//Memory router - doesn't change the url
-//static router - what page you currently render
