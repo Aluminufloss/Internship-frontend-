@@ -4,7 +4,14 @@ const sizes = {
   large: css`
     width: 28rem;
     height: 4rem;
-    font-size: 1.6rem;
+    font-size: 2rem;
+    padding: 0.8rem 0;
+    font-weight: 500;
+  `,
+  medium: css`
+    width: 20rem;
+    height: 4rem;
+    font-size: 2rem;
     padding: 0.8rem 0;
     font-weight: 500;
   `
@@ -24,6 +31,9 @@ const variations = {
 const Button = styled.button`
   border: none;
   border-radius: .8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all .3s ease;
 
   &:hover {
@@ -40,7 +50,7 @@ const Button = styled.button`
 
 Button.defaultProps = {
   variations: "primary",
-  size: "large",
+  size: "medium",
 };
 
 export default Button;

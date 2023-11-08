@@ -4,6 +4,7 @@ const initialState = {
   email: "",
   password: "",
   formType: "Login",
+  token: "",
 };
 
 const authenticationSlice = createSlice({
@@ -14,16 +15,16 @@ const authenticationSlice = createSlice({
       state.email = action.payload;
     },
 
-    updatePassword(state, action) {
-      state.password = action.payload;
-    },
-
     updateFormType(state, action) {
       state.formType = action.payload;
     },
+
+    updateToken(state, action) {
+      state.token = action.payload;
+    }
     
   }
 });
 
-export const { updateEmail, updatePassword, updateFormType } = authenticationSlice.actions;
+export const { updateEmail, updateFormType, updateToken } = authenticationSlice.actions;
 export default authenticationSlice.reducer;

@@ -8,7 +8,7 @@ import Button from "../../ui/Button";
 
 import apiAuth from "../../services/apiAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { updateEmail, updatePassword } from "./authenticationSlice";
+import { updateEmail, updateToken } from "./authenticationSlice";
 import { useNavigate } from "react-router-dom";
 import FormLink from "../../ui/FormLink";
 
@@ -20,15 +20,15 @@ function LoginForm() {
 
   const dispatch = useDispatch();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
 
     try {
       if (formType === "Login") {
         dispatch(updateEmail(email));
-        dispatch(updatePassword(password));
-        apiAuth({ email, password });
+        const token = await apiAuth({ email, password });
+        dispatch(updateToken(token));
         navigate('/articles');
       } else {
         console.log('something');
