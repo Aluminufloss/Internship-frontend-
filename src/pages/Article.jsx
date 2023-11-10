@@ -16,7 +16,7 @@ function Article() {
 const ArticleLayout = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 export default Article;

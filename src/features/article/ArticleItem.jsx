@@ -42,7 +42,7 @@ const StyledArticleItem = styled.div`
 
   .article__img {
     height: 100%;
-    width: 40rem;
+    width: 50%;
     border-right: 1px solid black;
     overflow: hidden;
   }

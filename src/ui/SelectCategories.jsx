@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import apiCategories from "../services/apiCategories";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { updateCategory, addCategories } from "../features/article/articleSlice";
 
 function SelectCategories() {
   const [categories, setCategories] = useState([]);
+  const currentCategory = useSelector((state) => state.article.currentCategory);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function SelectCategories() {
   }, [dispatch]);
 
   return (
-    <StyledSelect onChange={(e) => dispatch(updateCategory(e.target.value))}>
+    <StyledSelect onChange={(e) => dispatch(updateCategory(e.target.value))} value={currentCategory}>
       {categories.map((category) => <option key={category._id} value={category.value}>{category.label}</option>)}
     </StyledSelect>
   )

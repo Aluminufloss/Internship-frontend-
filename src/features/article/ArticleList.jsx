@@ -44,12 +44,18 @@ function ArticleList() {
 }
 
 const ArticleContainer = styled.div`
-  margin: 11rem auto 3rem;
+  margin: 11rem 0 3rem;
+  
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80rem, 1fr));
+  gap: 3rem; */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3rem;
+ 
 `;
 
 export default ArticleList;

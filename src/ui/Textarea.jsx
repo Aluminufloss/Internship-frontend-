@@ -8,6 +8,7 @@ const Textarea = styled.textarea`
   border: 1px solid var(--color-grey-light);
   border-radius: 0.8rem;
   background-color: var(--color-white);
+  resize: none;
 `
 
 export default Textarea;

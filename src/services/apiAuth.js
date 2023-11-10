@@ -1,7 +1,7 @@
 import { SERVER_URL } from "../utils/constant";
 
 export default async function login({ email, password }) {
-  let username = email;
+
   try {
     const res = await fetch("http://localhost:5000/login", {
       method: "POST",
@@ -9,7 +9,7 @@ export default async function login({ email, password }) {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "http://localhost:3000"
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username: email, password }),
     });
 
     if (!res.ok) throw new Error("Failed login");
@@ -18,5 +18,6 @@ export default async function login({ email, password }) {
     return data;
   } catch (err) {
     console.log(err);
+    
   }
 }

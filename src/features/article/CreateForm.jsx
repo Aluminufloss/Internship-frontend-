@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 import Input from "../../ui/Input";
 import Heading from "../../ui/Heading";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Button from "../../ui/Button";
 import Textarea from "../../ui/Textarea";
+
 import apiArticleCreate from "../../services/apiArticleCreate";
-import { useSelector } from "react-redux";
 
 function CreateForm() {
   const [heading, setHeading] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Home");
   const [value, setValue] = useState("");
   
   const token = useSelector((state) => state.authentication.token);
@@ -21,6 +22,8 @@ function CreateForm() {
   categories = categories.filter((category) => category.value !== "All");
 
   const navigate = useNavigate();
+
+  console.log(category);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -49,7 +52,7 @@ function CreateForm() {
         />
       </FormRowVertical>
       <FormRowVertical label="Article's category">
-        <StyledSelect onChange={(e) => setCategory(e.target.value)}>
+        <StyledSelect onChange={(e) => setCategory(e.target.value)} value={category}>
           {(categories.map((category) => (
             <option key={category._id} value={category.value}>
               {category.label}
