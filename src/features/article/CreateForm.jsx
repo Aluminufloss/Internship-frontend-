@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Input from "../../ui/Input";
@@ -6,14 +7,8 @@ import Heading from "../../ui/Heading";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Button from "../../ui/Button";
 import Textarea from "../../ui/Textarea";
-import { useNavigate } from "react-router-dom";
 
-function handleSubmit(e) {
-  e.preventDefault();
-
-
-  return;
-}
+import {apiArticleCreate} from "../../services/apiArticleCreate";
 
 function CreateForm() {
   const [heading, setHeading] = useState("");
@@ -21,6 +16,18 @@ function CreateForm() {
   const [text, setText] = useState("");
 
   const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    try {
+      e.preventDefault();
+    
+      apiArticleCreate({ heading, category, text });
+    
+      return;
+    } catch(e) {
+      console.log(e)
+    }
+  }
 
   return (
     <StyledForm onSubmit={handleSubmit}>

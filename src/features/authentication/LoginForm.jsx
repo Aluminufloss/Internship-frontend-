@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Input from "../../ui/Input";
 import Heading from "../../ui/Heading";
 import FormRowVertical from "../../ui/FormRowVertical";
 import Button from "../../ui/Button";
+import FormLink from "../../ui/FormLink";
 
 import apiAuth from "../../services/apiAuth";
-import { useDispatch, useSelector } from "react-redux";
+
 import { updateEmail, updatePassword } from "./authenticationSlice";
-import { useNavigate } from "react-router-dom";
-import FormLink from "../../ui/FormLink";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
