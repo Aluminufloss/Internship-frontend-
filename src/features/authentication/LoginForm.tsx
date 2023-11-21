@@ -52,7 +52,7 @@ const LoginForm: FC<LoginProps> = (props) => {
   return (
     <StyledLoginForm>
       <Form onSubmit={handleSubmit}>
-        <Heading headingType="h2" className="heading">
+        <Heading headingType="h5" className="heading">
           {checkFormType(props.formType)
             ? "Log in to your account"
             : "Register now"}
@@ -73,7 +73,7 @@ const LoginForm: FC<LoginProps> = (props) => {
           {checkFormType(props.formType) ? "Log in" : "Register"}
         </Button>
         <StyledLinkContainer>
-          <Text className="text-link">
+          <Text className="text-link" fontSize="primary">
             {checkFormType(props.formType)
               ? "Don't have an account?"
               : "Already have an account?"}

@@ -6,7 +6,6 @@ import { getArticles } from "./articleSlice";
 import { IArticle } from "../../models/response/Article/IArticle";
 
 import List from "../../ui/List";
-import ListItem from "../../ui/ListItem";
 import Article from "../../ui/Article";
 
 const ArticleList: React.FC = () => {
@@ -17,7 +16,7 @@ const ArticleList: React.FC = () => {
 
   const renderArticle = (article: IArticle) => {
     return (
-      <Article article={article}/>
+      <Article article={article} />
     );
   };
 

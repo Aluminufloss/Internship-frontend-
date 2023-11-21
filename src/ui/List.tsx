@@ -8,7 +8,7 @@ type ListProps<T> = {
   renderItem: (item: T) => React.ReactNode;
 }
 
-const List = <T extends {id: string}>(props: ListProps<T>) => {
+const List = <T extends {_id: string}>(props: ListProps<T>) => {
   return (
     <StyledList>
       {props.items.map((item, i) => (

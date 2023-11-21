@@ -19,10 +19,10 @@ const Link: React.FC<LinkProps> = (props) => {
 
 const COLOR = {
   primary: css`
-    color: ${props => `${props.theme.colors.black}`};
+    color: ${props => `${props.theme.colors.primary}`};
   `,
   secondary: css`
-    color: ${props => `${props.theme.colors.primary}`};
+    color: ${props => `${props.theme.colors.black}`};
   `,
 };
 

@@ -11,10 +11,12 @@ const theme = {
   },
   fontSizes: {
     small: "10px",
-    mediumSmall: "12px",
-    medium: "16px",
-    mediumLarge: "24px",
-    large: "32px"
+    smallBig: "16px",
+    mediumSmall: "24px",
+    medium: "32px",
+    mediumLarge: "48px",
+    large: "64px",
+    superLarge: "128px",
   }
 };
 

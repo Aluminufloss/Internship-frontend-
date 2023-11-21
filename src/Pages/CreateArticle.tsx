@@ -1,10 +1,9 @@
-import { FC } from "react";
 import styled from "styled-components";
 import Header from "../ui/Header";
 import LinkButton from "../ui/LinkButton";
 import CreateArticleForm from "../features/article/CreateArticleForm";
 
-const CreateArticle: FC = () => {
+const CreateArticle: React.FC = () => {
   return (
     <ArticleLayout>
       <Header>

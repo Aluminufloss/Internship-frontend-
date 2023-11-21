@@ -6,10 +6,14 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import Heading from "../../ui/Heading";
 import Button from "../../ui/Button";
-
-import { useAppDispatch, useAppSelector } from "../../hooks/hook";
-import SelectCategories from "../../entities/SelectCategories";
 import Textarea from "../../ui/Textarea";
+
+import { useAppDispatch } from "../../hooks/hook";
+import SelectCategories from "../../entities/SelectCategories";
+
+import { createArticle } from "./articleSlice";
+import { INewArticle } from "../../models/response/Article/IArticle";
+
 
 const CreateArticleForm: React.FC = () => {
   const [heading, setHeading] = useState("");
@@ -22,12 +26,21 @@ const CreateArticleForm: React.FC = () => {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const article: INewArticle = {
+      heading,
+      category,
+      value,
+    };
+
+    dispatch(createArticle({article}));
+
+    navigate("/articles");
   }
 
   return (
     <StyledCreateForm>
       <StyledForm onSubmit={handleSubmit}>
-        <Heading headingType="h2" className="heading">
+        <Heading headingType="h4" className="heading">
           Create an article
         </Heading>
         <Input

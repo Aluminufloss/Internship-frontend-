@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { IArticle } from "../../models/response/Article/IArticle";
+import { IArticle, INewArticle } from "../../models/response/Article/IArticle";
 
 import ArticleService from "../../services/ArticleService";
 import CategoryService from "../../services/CategoryService";
@@ -28,23 +28,25 @@ export const getArticles = createAsyncThunk<IArticle[], { category: string }>(
   }
 );
 
-export const getArticlesById = createAsyncThunk<IArticle, { category: string }>(
+export const getArticlesById = createAsyncThunk<IArticle, { id: string }>(
   "/articles/:id",
-  async () => {
-    const response = await ArticleService.getArticlesById();
+  async (params) => {
+    const response = await ArticleService.getArticlesById(params.id);
 
     return response.data.article;
   }
 );
 
 export const createArticle = createAsyncThunk<
-  IArticle,
-  { heading: string; value: string; category: string }
->("/articles/:id", async (params) => {
+  INewArticle,
+  { 
+    article: INewArticle
+  }
+>("/articles/create", async (params) => {
   const response = await ArticleService.createArticle(
-    params.heading,
-    params.value,
-    params.category
+    params.article.heading,
+    params.article.value,
+    params.article.category,
   );
 
   return response.data.article;

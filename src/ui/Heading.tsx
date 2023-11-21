@@ -5,6 +5,7 @@ type HeadingProps = {
   children: ReactNode;
   headingType: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   color?: "primary" | "secondary";
+  fontSize?: string,
   className?: string;
 };
 
@@ -12,6 +13,7 @@ const Heading: React.FC<HeadingProps> = (props) => {
   return (
     <StyledHeading
       color={props.color ?? "primary"}
+      fontSize={props.fontSize ?? ""}
       headingType={props.headingType}
       className={props.className}
     >
@@ -55,7 +57,14 @@ const StyledHeading = styled.h1<HeadingProps>`
     props.headingType === "h4" &&
     css`
       font-size: ${props => `${props.theme.fontSizes.medium}`};
-      font-weight: 500;
+      font-weight: 600;
+    `}
+
+  ${(props) =>
+    props.headingType === "h5" &&
+    css`
+      font-size: ${props => `${props.theme.fontSizes.mediumSmall}`};
+      font-weight: 600;
     `}
 
   ${(props) => props.color && COLOR[props.color]}

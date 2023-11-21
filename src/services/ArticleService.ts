@@ -7,11 +7,15 @@ export default class ArticleService {
     return $api.post<ListOfArticlesResponse>("/articles", { category });
   }
 
-  static async getArticlesById(): Promise<AxiosResponse<ArticleResponse>> {
-    return $api.get<ArticleResponse>("/articles:id");
+  static async getArticlesById(id: string): Promise<AxiosResponse<ArticleResponse>> {
+    return $api.get<ArticleResponse>(`/articles/${id}`);
   }
 
-  static async createArticle(heading: string, value: string, category: string): Promise<AxiosResponse<ArticleResponse>> {
+  static async createArticle(
+    heading: string,
+    value: string,
+    category: string
+    ): Promise<AxiosResponse<ArticleResponse>> {
     return $api.post<ArticleResponse>("/articles/create", { heading, value, category });
   }
 }

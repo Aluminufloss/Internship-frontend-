@@ -7,12 +7,13 @@ type LinkProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; 
   children?: React.ReactNode; 
   color?: "primary" | "secondary"; 
+  className?: string;
   to: string; 
 };
 
 const LinkButton: React.FC<LinkProps> = (props) => {
   return (
-    <Container to={props.to} onClick={props.onClick} color={props.color ?? "primary"} >
+    <Container to={props.to} onClick={props.onClick} color={props.color ?? "primary"} className={props.className} >
       {props.children}
     </Container>
   )
@@ -34,8 +35,6 @@ const Container = styled(Link)<LinkProps>`
   width: 180px;
   height: 40px;
   padding: 8px 15px;
-  margin-right: 30px;
-  margin-left: 30px;
   cursor: pointer;
   background-color: ${props => props.theme.colors.primary};
   border: 1px solid ${props => props.theme.colors.lightGrey};

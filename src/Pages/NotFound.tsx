@@ -1,9 +1,9 @@
 import React from "react";
 
-function NotFoundPage() {
+const NotFoundPage: React.FC = () => {
   return (
     <div>
-      
+      The page not found
     </div>
   )
 };
