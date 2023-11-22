@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import Username from "../ui/Username";
 
-import { getUserFromLocaleStorage } from "../utils/helper";
+import { useAppSelector } from "../hooks/hook";
 
 const MainPageUsername: React.FC = () => {
-  const [user, setUser] = useState("User");
-
-  useEffect(() => {
-    setUser(() => getUserFromLocaleStorage());
-  }, []);
+  const user = useAppSelector((state) => state.authentication.user);
 
   return (
     <StyledMainPageUsername>
-      {user}
+      {user.email}
     </StyledMainPageUsername>
   )
 };

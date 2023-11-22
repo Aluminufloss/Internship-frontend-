@@ -14,9 +14,9 @@ import LogoutButton from "../entities/LogoutButton";
 import CreateArticleLink from "../entities/CreateArticleLink";
 
 const Article: FC = () => {
-  const user = useAppSelector((state) => state.authentication.isAuth);
-
-  return (
+  const user = useAppSelector((state) => state.authentication.isAuth); 
+  
+  return ( 
     <ArticleLayout>
       <Header>
         <MainPageUsername />

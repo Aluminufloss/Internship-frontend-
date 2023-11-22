@@ -7,7 +7,7 @@ const CreateArticle: React.FC = () => {
   return (
     <ArticleLayout>
       <Header>
-        <LinkButton to="/articles">
+        <LinkButton to="/articles" className="link">
           Вернуться
         </LinkButton>
       </Header>
@@ -21,6 +21,10 @@ const ArticleLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .link {
+    margin-right: 30px;
+  }
 `;
 
 export default CreateArticle;

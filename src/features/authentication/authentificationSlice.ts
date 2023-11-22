@@ -29,7 +29,6 @@ export const login = createAsyncThunk<
 >("/login", async (params) => {
   const response = await AuthService.login(params.email, params.password);
   localStorage.setItem("token", response.data.accessToken);
-  localStorage.setItem("user", response.data.user.email);
 
   return response.data.user;
 });
@@ -52,13 +51,24 @@ export const registration = createAsyncThunk<
 export const logout = createAsyncThunk("/logout", async () => {
   await AuthService.logout();
   localStorage.removeItem("token");
-  localStorage.removeItem("user");
 });
 
 export const checkAuth = createAsyncThunk("/refresh", async () => {
   const response = await axios.get<AuthRespone>(`${API_URL}/refresh`, { withCredentials: true });
   localStorage.setItem("token", response.data.accessToken);
-  localStorage.setItem("user", response.data.user.email);
+
+  return response.data.user;
+})
+
+// export const getMe = createAsyncThunk("/user", async () => {
+//   const response = await axios.get<AuthRespone>(`${API_URL}/user`, { withCredentials: true });
+
+//   return response.data.user;
+// })
+
+export const getMe = createAsyncThunk("/user", async () => {
+  const response = await AuthService.getMe();
+  console.log(response.data.user);
 
   return response.data.user;
 })
@@ -101,21 +111,21 @@ const authenticationSlice = createSlice({
         console.log("error");
       })
 
-      .addCase(checkAuth.pending, (state, action) => {
+      .addCase(getMe.pending, (state, action) => {
         state.isLoading = false;
         state.isAuth = false;
       })
 
-      .addCase(checkAuth.fulfilled, (state, action) => {
+      .addCase(getMe.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
         state.isAuth = true;
       })
 
-      .addCase(checkAuth.rejected, (state, action) => {
+      .addCase(getMe.rejected, (state, action) => {
         state.isLoading = false;
         state.isAuth = false;
-        throw Error("Login error");
+        throw Error("Authorization error");
       })
 
       .addCase(logout.pending, (state, action) => {
